@@ -11,7 +11,7 @@
   token.subscribe(u => void (token_value = u));
   $: {
     const client = new ApolloClient({
-      uri: "http://localhost:3000/graphql" || "https://evening-fortress-22549.herokuapp.com/graphql",
+      uri: "https://evening-fortress-22549.herokuapp.com/graphql",
       headers: token_value && { token: token_value }
     });
 
