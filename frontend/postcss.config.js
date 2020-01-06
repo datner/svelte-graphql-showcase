@@ -8,3 +8,11 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 })
 
 const production = !process.env.ROLLUP_WATCH
+
+module.exports = {
+    from: undefined,
+    plugins: [
+        require('tailwindcss'),
+        purgecss,
+    ]
+}

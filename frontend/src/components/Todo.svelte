@@ -18,24 +18,24 @@
   li {
     text-decoration: none;
     list-style: none;
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
     text-align: start;
   }
 
-  .todo {
-    line-height: 40px;
-    position: relative;
-    background: linear-gradient(
-      to right,
-      rgba(255, 0, 0, 0.2) 50%,
-      transparent 50%
-    );
-    background-size: 200% 100%;
-    background-position: right bottom;
-    transition: 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-  .todo:hover {
-    background-position: left bottom;
+  @screen md {
+    .todo {
+      background: linear-gradient(
+        to right,
+        rgba(255, 0, 0, 0.2) 50%,
+        transparent 50%
+      );
+      background-size: 201% 100%;
+      background-position: right bottom;
+      transition: 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    }
+    .todo:hover {
+      background-position: left bottom;
+    }
   }
 
   .todo.done .title {
@@ -66,8 +66,12 @@
   }
 
   .content {
-    padding-left: 24px;
     max-width: 300px;
+  }
+
+  .trans {
+      transition: 300ms;
+      /* transform-origin: 50% 62.5%; */
   }
 
   .delete {
@@ -94,23 +98,27 @@
   }
 </style>
 
-<li in:fly={{ duration: 300, y: 200, easing: cubicOut }}>
-  <div class="todo" class:done={todo.isCompleted}>
-    <div class="container">
-      <span class="title" on:click={handleCheck}>{todo.title}</span>
-      <div class:open on:click={() => dispatch('click', open ? null : todo.id)}>
+<li class="self-center border-b-2 border-red-700 md:max-w-lg md:mx-auto" in:fly={{ duration: 300, y: 200, easing: cubicOut }}>
+  <div class="px-4 py-2 todo" class:done={todo.isCompleted}>
+    <div class="flex align-baseline align-middle _container">
+      <span
+        class="flex-grow text-lg font-medium tracking-wider _title"
+        on:click={handleCheck}>
+        {todo.title}
+      </span>
+      <div class="-my-3 text-3xl trans" class:open on:click={() => dispatch('click', open ? null : todo.id)}>
         +
       </div>
     </div>
+  </div>
     {#if open}
       <div
         transition:slide={{ delay: 250, duration: 300, easing: cubicOut }}
-        class="content">
-        {todo.content}
-        <button class="delete" on:click={() => dispatch('delete', todo.id)}>
+        class="flex flex-col justify-center p-4 bg-gray-100 shadow-inner">
+        <div class="max-w-sm mb-4" >{todo.content}</div>
+        <button class="w-1/5 text-white bg-red-600" on:click={() => dispatch('delete', todo.id)}>
           delete
         </button>
       </div>
     {/if}
-  </div>
 </li>

@@ -3,3 +3,4 @@ another-backend/
 backend-go/
 backend-hapi/
 legacy-backend/
+node_modules/

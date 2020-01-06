@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || "http:localhost",
+    origin: process.env.FRONTEND_URL || "http://localhost:5000",
     credentials: true
 }
 

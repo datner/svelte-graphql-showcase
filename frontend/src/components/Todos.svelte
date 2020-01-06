@@ -50,33 +50,14 @@
 </script>
 
 <style scoped>
-  :global(body) {
-    /* this will apply to <body> */
-    overflow: hidden;
-  }
   /* your styles go here */
   ul {
     margin: 0;
     padding: 0;
   }
 
-  .container {
-    display: flex;
-    max-width: 1000px;
-    margin: 0 auto;
-    justify-content: center;
-  }
-
-  form {
-    order: 1;
-    text-align: start;
-    margin-right: 12px;
-    padding-right: 12px;
-    border-right: 1px solid silver;
-  }
-
   .todo {
-    order: 2;
+    /* order: 2; */
     flex-grow: 1;
     align-self: flex-start;
     max-width: 400px;
@@ -86,18 +67,19 @@
     width: 100%;
   }
 
+
 </style>
 
 <TodoFetcher bind:data bind:loading bind:error />
 
 <!-- markup (zero or more items) goes here -->
-<div class="container">
+<div class="flex flex-col align-middle xl:justify-center lg:flex-row-reverse">
   {#if loading}
     <p>loading...</p>
   {:else if error}
     <p>boo....</p>
   {:else}
-    <div class="todo">
+    <div class="flex-grow mb-4 xl:flex-grow-0 xl:w-1/3 lg:mr-4">
       <ul>
         {#each data.todos as todo (todo.id)}
           <Todo
@@ -113,12 +95,11 @@
       </ul>
     </div>
 
-    <form on:submit|preventDefault={addTodo}>
+    <form class="p-4 my-5 bg-gray-100 border-red-800 shadow-inner xl:w-1/3 lg:mx-5 md:w-1/2 md:mx-auto lg:mt-0 md:rounded-lg md:shadow-lg" on:submit|preventDefault={addTodo}>
       <label for="title">Title</label>
-      <input name="title" type="text" />
+      <input class="mb-3" name="title" type="text" />
       <label for="content">Content</label>
-      <textarea name="content" cols="30" rows="10" />
-      <br />
+      <textarea class="mb-4" name="content" cols="30" rows="10" />
       <button type="submit">Submit</button>
     </form>
   {/if}
