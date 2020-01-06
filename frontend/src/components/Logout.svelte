@@ -8,7 +8,7 @@
 </script>
 
 <style>
-  button {
+  /* button {
     background: transparent;
     color: tomato;
     font-size: 1.2rem;
@@ -27,7 +27,7 @@
   button:active {
     background: crimson;
     color: white;
-  }
+  } */
 </style>
 
-<button on:click={logout}>Logout</button>
+<button class="lg:m-4 lg:fixed lg:bottom-0 lg:right-0 lg:w-1/12" on:click={logout}>Logout</button>

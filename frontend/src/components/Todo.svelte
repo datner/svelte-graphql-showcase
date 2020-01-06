@@ -106,7 +106,7 @@
         on:click={handleCheck}>
         {todo.title}
       </span>
-      <div class="-my-3 text-3xl trans" class:open on:click={() => dispatch('click', open ? null : todo.id)}>
+      <div class="-my-3 text-3xl cursor-pointer trans" class:open on:click={() => dispatch('click', open ? null : todo.id)}>
         +
       </div>
     </div>

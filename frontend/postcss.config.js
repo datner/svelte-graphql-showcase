@@ -13,6 +13,6 @@ module.exports = {
     from: undefined,
     plugins: [
         require('tailwindcss'),
-        purgecss,
+        // purgecss,
     ]
 }

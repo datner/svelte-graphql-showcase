@@ -73,7 +73,7 @@
 <TodoFetcher bind:data bind:loading bind:error />
 
 <!-- markup (zero or more items) goes here -->
-<div class="flex flex-col align-middle xl:justify-center lg:flex-row-reverse">
+<div class="flex flex-col max-w-6xl m-auto align-middle xl:justify-center lg:flex-row-reverse">
   {#if loading}
     <p>loading...</p>
   {:else if error}
