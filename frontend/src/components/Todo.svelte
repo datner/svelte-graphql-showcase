@@ -116,7 +116,7 @@
         transition:slide={{ delay: 250, duration: 300, easing: cubicOut }}
         class="flex flex-col justify-center p-4 bg-gray-100 shadow-inner">
         <div class="max-w-sm mb-4" >{todo.content}</div>
-        <button class="w-1/5 text-white bg-red-600" on:click={() => dispatch('delete', todo.id)}>
+        <button class="text-white bg-red-600" on:click={() => dispatch('delete', todo.id)}>
           delete
         </button>
       </div>
