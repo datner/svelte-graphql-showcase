@@ -20,6 +20,8 @@
         }
       }
     });
+    e.target.title.value = ""
+    e.target.content.value = ""
     data.todos = [...data.todos, res.data.createTodo];
   }
 

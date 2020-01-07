@@ -38,7 +38,7 @@
     }
   }
 
-  .todo.done .title {
+  .done span {
     color: silver;
     text-decoration: line-through;
   }
@@ -69,7 +69,7 @@
     max-width: 300px;
   }
 
-  .trans {
+  .trans * {
       transition: 300ms;
       /* transform-origin: 50% 62.5%; */
   }
@@ -99,14 +99,14 @@
 </style>
 
 <li class="self-center border-b-2 border-red-700 md:max-w-lg md:mx-auto" in:fly={{ duration: 300, y: 200, easing: cubicOut }}>
-  <div class="px-4 py-2 todo" class:done={todo.isCompleted}>
-    <div class="flex align-baseline align-middle _container">
+  <div class="px-4 py-2 cursor-pointer todo" class:done={todo.isCompleted}>
+    <div class="flex align-baseline align-middle trans _container">
       <span
         class="flex-grow text-lg font-medium tracking-wider _title"
         on:click={handleCheck}>
         {todo.title}
       </span>
-      <div class="-my-3 text-3xl cursor-pointer trans" class:open on:click={() => dispatch('click', open ? null : todo.id)}>
+      <div class="-my-3 text-3xl cursor-pointer" class:open on:click={() => dispatch('click', open ? null : todo.id)}>
         +
       </div>
     </div>
